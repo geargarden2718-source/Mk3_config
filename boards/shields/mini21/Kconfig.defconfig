@@ -1,0 +1,6 @@
+if SHIELD_MINI21
+
+config ZMK_KEYBOARD_NAME
+    default "Mini21"
+
+endif

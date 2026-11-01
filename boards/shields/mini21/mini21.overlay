@@ -1,0 +1,119 @@
+/* Mini21 custom shield for Seeed XIAO nRF52840 Plus.
+ * Matrix: ROW D0..D3, COL D11 D12 D6 D7 D8 D9.
+ * Diodes: column -> row (stripe/cathode on ROW side).
+ * SSD1306 OLED: D4 SDA, D5 SCL, 128x32 @ 0x3c.
+ * Dedicated power pushbutton: D10 -> GND (hold 2 sec to Soft Off).
+ */
+#include <zephyr/dt-bindings/gpio/gpio.h>
+#include <dt-bindings/zmk/matrix_transform.h>
+
+/ {
+    chosen {
+        zmk,physical-layout = &mini21_layout;
+        zephyr,display = &mini21_oled;
+    };
+
+    mini21_kscan: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "col2row";
+        wakeup-source;
+
+        /* D0 P0.02, D1 P0.03, D2 P0.28, D3 P0.29 */
+        row-gpios = <&gpio0 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&gpio0 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&gpio0 28 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+
+        /* D11 P0.15, D12 P0.19, D6 P1.11, D7 P1.12,
+         * D8 P1.13, D9 P1.14
+         */
+        col-gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>,
+                    <&gpio0 19 GPIO_ACTIVE_HIGH>,
+                    <&gpio1 11 GPIO_ACTIVE_HIGH>,
+                    <&gpio1 12 GPIO_ACTIVE_HIGH>,
+                    <&gpio1 13 GPIO_ACTIVE_HIGH>,
+                    <&gpio1 14 GPIO_ACTIVE_HIGH>;
+    };
+
+    mini21_transform: matrix_transform {
+        compatible = "zmk,matrix-transform";
+        rows = <4>;
+        columns = <6>;
+        map = <
+            RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5)
+            RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5)
+            RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)
+                              RC(3,3) RC(3,4) RC(3,5)
+        >;
+    };
+
+    mini21_layout: physical_layout_0 {
+        compatible = "zmk,physical-layout";
+        display-name = "Mini21";
+        kscan = <&mini21_kscan>;
+        transform = <&mini21_transform>;
+    };
+
+    /* Power pushbutton SW22, XIAO D10 (P1.15) to GND. */
+    mini21_keys {
+        compatible = "gpio-keys";
+        mini21_power: power_key {
+            gpios = <&gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        };
+    };
+
+    behaviors {
+        mini21_soft_off: mini21_soft_off {
+            compatible = "zmk,behavior-soft-off";
+            #binding-cells = <0>;
+            hold-time-ms = <2000>;
+        };
+    };
+
+    mini21_power_scan: power_scan {
+        compatible = "zmk,kscan-gpio-direct";
+        input-keys = <&mini21_power>;
+        wakeup-source;
+    };
+
+    mini21_power_handler: power_handler {
+        compatible = "zmk,kscan-sideband-behaviors";
+        kscan = <&mini21_power_scan>;
+        auto-enable;
+        wakeup-source;
+        soft_off {
+            row = <0>;
+            column = <0>;
+            bindings = <&mini21_soft_off>;
+        };
+    };
+
+    mini21_power_wakeup: power_wakeup {
+        compatible = "zmk,gpio-key-wakeup-trigger";
+        trigger = <&mini21_power>;
+        wakeup-source;
+    };
+
+    mini21_soft_off_wakers {
+        compatible = "zmk,soft-off-wakeup-sources";
+        wakeup-sources = <&mini21_power_wakeup>;
+    };
+};
+
+&xiao_i2c {
+    status = "okay";
+    mini21_oled: ssd1306@3c {
+        compatible = "solomon,ssd1306fb";
+        reg = <0x3c>;
+        width = <128>;
+        height = <32>;
+        segment-offset = <0>;
+        page-offset = <0>;
+        display-offset = <0>;
+        multiplex-ratio = <31>;
+        segment-remap;
+        com-invdir;
+        com-sequential;
+        prechargep = <0x22>;
+    };
+};

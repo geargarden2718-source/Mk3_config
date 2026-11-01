@@ -1,0 +1,8 @@
+file_format: "1"
+id: mini21
+name: Mini21
+type: shield
+requires: [xiao]
+features:
+  - keys
+  - display
