@@ -2,4 +2,6 @@
 include:
   - board: seeeduino_xiao_ble
     shield: mini21
-      
+
+  - board: seeeduino_xiao_ble
+    shield: settings_reset
