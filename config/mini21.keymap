@@ -18,14 +18,14 @@
         icloud: icloud {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LANG2 &kp M &kp A &kp S &kp A &kp T &kp O &kp PERIOD &kp NUMBER_2 &kp N7 &kp NUMBER_1 &kp N8 &kp NUMBER_2 &kp AT_SIGN &kp I &kp C &kp L &kp O &kp U &kp D &kp PERIOD &kp C &kp O &kp M>;
+            bindings = <&kp LANG2 &kp M &kp A &kp S &kp A &kp T &kp O &kp PERIOD &kp NUMBER_2 &kp N7 &kp NUMBER_1 &kp N8 &kp NUMBER_2 &kp LBKT &kp I &kp C &kp L &kp O &kp U &kp D &kp PERIOD &kp C &kp O &kp M>;
             label = "ICLOUD";
         };
 
         tmu: tmu {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LANG2 &kp T &kp A &kp K &kp E &kp U &kp C &kp H &kp I &kp MINUS &kp M &kp A &kp S &kp A &kp T &kp O &kp AT_SIGN &kp E &kp D &kp PERIOD &kp T &kp M &kp U &kp PERIOD &kp A &kp C &kp PERIOD &kp J &kp P>;
+            bindings = <&kp LANG2 &kp T &kp A &kp K &kp E &kp U &kp C &kp H &kp I &kp MINUS &kp M &kp A &kp S &kp A &kp T &kp O &kp LBKT &kp E &kp D &kp PERIOD &kp T &kp M &kp U &kp PERIOD &kp A &kp C &kp PERIOD &kp J &kp P>;
             label = "TMU";
         };
     };
@@ -55,7 +55,7 @@
 &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR
 &none         &none         &none         &to 4         &to 3         &to 2
 &kp F1        &kp F2        &kp F3        &kp F4        &kp LANG2     &kp LANG1
-                                          &trans        &trans        &trans
+                                          &trans        &trans        &fn_base 1 0
             >;
         };
 
@@ -64,7 +64,7 @@
 &trans         &kp SLASH     &kp N7        &kp N8        &kp N9        &kp MINUS
 &kp LA(TILDE)  &kp ASTERISK  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp PLUS
 &trans         &kp N0        &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERIOD
-                                           &trans        &trans        &trans
+                                           &trans        &trans        &fn_base 1 0
             >;
         };
 
@@ -73,7 +73,7 @@
 &trans  &kp LG(LS(N5))  &kp LG(S)      &kp UP_ARROW  &kp LG(Z)  &kp DELETE
 &trans  &kp LG(LEFT)    &kp LEFT       &kp DOWN      &kp RIGHT  &kp LG(RIGHT)
 &trans  &kp LG(F)       &kp LG(SPACE)  &kp LG(C)     &kp LG(V)  &kp LG(LA(LS(V)))
-                                       &trans        &trans     &trans
+                                       &trans        &trans     &fn_base 1 0
             >;
         };
 
@@ -82,7 +82,7 @@
 &trans  &trans  &trans  &trans  &tmu    &icloud
 &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans
+                        &trans  &trans  &fn_base 1 0
             >;
         };
     };
