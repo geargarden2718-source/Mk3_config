@@ -40,10 +40,10 @@
             //               SW19 SW20 SW21
 
             bindings = <
-&kp TAB    &kp Q  &kp W  &kp E      &kp R    &kp T
-&kp LC(A)  &kp A  &kp S  &kp D      &kp F    &kp G
-&kp LS(Z)  &kp Z  &kp X  &kp C      &kp V    &kp B
-                         &kp SPACE  &kp RET  &fn_base 4 0
+&kp TAB     &kp Q  &kp W  &kp E      &kp R    &kp T
+&kp LC(A)   &kp A  &kp S  &kp D      &kp F    &kp G
+&kp LSHIFT  &kp Z  &kp X  &kp C      &kp V    &kp B
+                          &kp SPACE  &kp RET  &fn_base 4 0
             >;
         };
 
