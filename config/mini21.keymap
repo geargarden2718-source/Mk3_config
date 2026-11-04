@@ -56,10 +56,10 @@
 
         shortcut {
             bindings = <
-&trans  &kp LG(LS(N5))  &kp LG(S)      &kp UP_ARROW  &kp LG(Z)  &kp BACKSPACE
-&trans  &kp LG(LEFT)    &kp LEFT       &kp DOWN      &kp RIGHT  &kp LG(RIGHT)
-&trans  &kp LG(F)       &kp LG(SPACE)  &kp LG(C)     &kp LG(V)  &kp LG(LA(LS(V)))
-                                       &kp SPACE     &kp ENTER  &fn_base 4 0
+&kp TAB           &kp LG(LS(N5))  &kp LG(S)      &kp UP_ARROW  &kp LG(Z)  &kp BACKSPACE
+&kp LEFT_CONTROL  &kp LG(LEFT)    &kp LEFT       &kp DOWN      &kp RIGHT  &kp LG(RIGHT)
+&kp LEFT_SHIFT    &kp LG(F)       &kp LG(SPACE)  &kp LG(C)     &kp LG(V)  &kp LG(LA(LS(V)))
+                                                 &kp SPACE     &kp ENTER  &fn_base 4 0
             >;
         };
 
@@ -79,10 +79,10 @@
             //               SW19 SW20 SW21
 
             bindings = <
-&kp TAB     &kp Q  &kp W  &kp E   &kp R   &kp T
-&kp LC(A)   &kp A  &kp S  &kp D   &kp F   &kp G
-&kp LSHIFT  &kp Z  &kp X  &kp C   &kp V   &kp B
-                          &trans  &trans  &trans
+&trans  &kp Q  &kp W  &kp E   &kp R   &kp T
+&trans  &kp A  &kp S  &kp D   &kp F   &kp G
+&trans  &kp Z  &kp X  &kp C   &kp V   &kp B
+                      &trans  &trans  &trans
             >;
         };
 
@@ -100,7 +100,7 @@
             // Hold SW21 and tap SW6 to clear the selected profile bond.
 
             bindings = <
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR
+&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &none
 &none         &none         &none         &to 3         &to 2         &to 1
 &none         &none         &none         &none         &kp LANG2     &kp LANG1
                                           &trans        &trans        &trans
