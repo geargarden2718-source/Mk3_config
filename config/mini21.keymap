@@ -28,22 +28,38 @@
             bindings = <&kp LANG2 &kp T &kp A &kp K &kp E &kp U &kp C &kp H &kp I &kp MINUS &kp M &kp A &kp S &kp A &kp T &kp O &kp LBKT &kp E &kp D &kp PERIOD &kp T &kp M &kp U &kp PERIOD &kp A &kp C &kp PERIOD &kp J &kp P>;
             label = "TMU";
         };
+
+        printer_IP: printer_IP {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LANG2 &kp NUMBER_1 &kp N9 &kp NUMBER_2 &kp PERIOD &kp NUMBER_1 &kp NUMBER_6 &kp N8 &kp PERIOD &kp NUMBER_1 &kp NUMBER_1 &kp PERIOD &kp NUMBER_3>;
+            label = "PRINTER_IP";
+        };
+
+        printer_AC: printer_AC {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LANG2 &kp F &kp E &kp NUMBER_6 &kp A &kp NUMBER_2 &kp N7 &kp NUMBER_2 &kp N9>;
+            label = "PRINTER_AC";
+        };
+
+        printer_SN: printer_SN {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LANG2 &kp N0 &kp N9 &kp NUMBER_4 &kp N8 &kp LS(A) &kp LS(D) &kp N5 &kp LS(C) &kp N0 &kp NUMBER_2 &kp N0 &kp NUMBER_4 &kp N7 &kp NUMBER_4 &kp NUMBER_3>;
+            label = "PRINTER_SN";
+        };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
-            // SW01..SW06
-            // SW07..SW12
-            // SW13..SW18
-            //               SW19 SW20 SW21
-
+        shortcut {
             bindings = <
-&kp TAB     &kp Q  &kp W  &kp E      &kp R    &kp T
-&kp LC(A)   &kp A  &kp S  &kp D      &kp F    &kp G
-&kp LSHIFT  &kp Z  &kp X  &kp C      &kp V    &kp B
-                          &kp SPACE  &kp RET  &fn_base 4 0
+&trans  &kp LG(LS(N5))  &kp LG(S)      &kp UP_ARROW  &kp LG(Z)  &kp BACKSPACE
+&trans  &kp LG(LEFT)    &kp LEFT       &kp DOWN      &kp RIGHT  &kp LG(RIGHT)
+&trans  &kp LG(F)       &kp LG(SPACE)  &kp LG(C)     &kp LG(V)  &kp LG(LA(LS(V)))
+                                       &kp SPACE     &kp ENTER  &fn_base 4 0
             >;
         };
 
@@ -52,25 +68,30 @@
 &trans         &kp SLASH  &kp N7        &kp N8        &kp N9        &kp MINUS
 &kp LA(TILDE)  &kp DQT    &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp COLON
 &trans         &kp N0     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERIOD
-                                        &trans        &trans        &fn_base 4 0
+                                        &trans        &trans        &trans
             >;
         };
 
-        shortcut {
+        default_layer {
+            // SW01..SW06
+            // SW07..SW12
+            // SW13..SW18
+            //               SW19 SW20 SW21
+
             bindings = <
-&trans  &kp LG(LS(N5))  &kp LG(S)      &kp UP_ARROW  &kp LG(Z)  &kp BACKSPACE
-&trans  &kp LG(LEFT)    &kp LEFT       &kp DOWN      &kp RIGHT  &kp LG(RIGHT)
-&trans  &kp LG(F)       &kp LG(SPACE)  &kp LG(C)     &kp LG(V)  &kp LG(LA(LS(V)))
-                                       &trans        &trans     &fn_base 4 0
+&kp TAB     &kp Q  &kp W  &kp E   &kp R   &kp T
+&kp LC(A)   &kp A  &kp S  &kp D   &kp F   &kp G
+&kp LSHIFT  &kp Z  &kp X  &kp C   &kp V   &kp B
+                          &trans  &trans  &trans
             >;
         };
 
         macro {
             bindings = <
-&trans  &trans  &trans  &trans  &tmu    &icloud
-&trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &fn_base 4 0
+&trans  &trans  &trans  &trans       &tmu         &icloud
+&trans  &trans  &trans  &printer_SN  &printer_AC  &printer_IP
+&trans  &trans  &trans  &trans       &trans       &trans
+                        &trans       &trans       &trans
             >;
         };
 
@@ -81,8 +102,8 @@
             bindings = <
 &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR
 &none         &none         &none         &to 3         &to 2         &to 1
-&kp F1        &kp F2        &kp F3        &kp F4        &kp LANG2     &kp LANG1
-                                          &trans        &trans        &fn_base 4 0
+&none         &none         &none         &none         &kp LANG2     &kp LANG1
+                                          &trans        &trans        &trans
             >;
         };
     };
