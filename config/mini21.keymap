@@ -59,7 +59,7 @@
 &kp TAB           &kp LG(LS(N5))     &kp LG(S)          &kp UP_ARROW  &kp LG(Z)  &kp BACKSPACE
 &kp LEFT_CONTROL  &kp LG(LEFT)       &kp LEFT           &kp DOWN      &kp RIGHT  &kp LG(RIGHT)
 &kp LEFT_SHIFT    &kp LG(LA(LC(F)))  &kp LG(LA(LC(T)))  &kp LG(C)     &kp LG(V)  &kp LG(LA(LS(V)))
-                                                        &kp SPACE     &kp ENTER  &fn_base 4 0
+                                                        &kp SPACE     &kp ENTER  &fn_base 5 0
             >;
         };
 
@@ -92,6 +92,15 @@
 &trans  &trans  &trans  &printer_SN  &printer_AC  &printer_IP
 &trans  &trans  &trans  &trans       &trans       &trans
                         &trans       &trans       &trans
+            >;
+        };
+
+        layer_5 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &kp LG(B)
+&trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans
             >;
         };
 
