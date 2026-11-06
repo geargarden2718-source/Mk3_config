@@ -72,7 +72,7 @@
             >;
         };
 
-        default_layer {
+        alphabet {
             // SW01..SW06
             // SW07..SW12
             // SW13..SW18
