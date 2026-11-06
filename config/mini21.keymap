@@ -56,10 +56,10 @@
 
         shortcut {
             bindings = <
-&kp TAB           &kp LG(LS(N5))     &kp LG(S)          &kp UP_ARROW  &kp LG(Z)  &kp BACKSPACE
-&kp LEFT_CONTROL  &kp LG(LEFT)       &kp LEFT           &kp DOWN      &kp RIGHT  &kp LG(RIGHT)
-&kp LEFT_SHIFT    &kp LG(LA(LC(F)))  &kp LG(LA(LC(T)))  &kp LG(C)     &kp LG(V)  &kp LG(LA(LS(V)))
-                                                        &kp SPACE     &kp ENTER  &fn_base 5 0
+&kp TAB         &kp LG(LS(N5))     &kp LG(S)          &kp UP_ARROW  &kp LG(Z)  &kp BACKSPACE
+&kp LG(B)       &kp LG(LEFT)       &kp LEFT           &kp DOWN      &kp RIGHT  &kp LG(RIGHT)
+&kp LEFT_SHIFT  &kp LG(LA(LC(F)))  &kp LG(LA(LC(T)))  &kp LG(C)     &kp LG(V)  &kp LG(LA(LS(V)))
+                                                      &kp SPACE     &kp ENTER  &fn_base 4 0
             >;
         };
 
@@ -79,10 +79,10 @@
             //               SW19 SW20 SW21
 
             bindings = <
-&trans  &kp Q  &kp W  &kp E   &kp R   &kp T
-&trans  &kp A  &kp S  &kp D   &kp F   &kp G
-&trans  &kp Z  &kp X  &kp C   &kp V   &kp B
-                      &trans  &trans  &trans
+&trans            &kp Q  &kp W  &kp E   &kp R   &kp T
+&kp LEFT_CONTROL  &kp A  &kp S  &kp D   &kp F   &kp G
+&trans            &kp Z  &kp X  &kp C   &kp V   &kp B
+                                &trans  &trans  &trans
             >;
         };
 
@@ -92,15 +92,6 @@
 &trans  &trans  &trans  &printer_SN  &printer_AC  &printer_IP
 &trans  &trans  &trans  &trans       &trans       &trans
                         &trans       &trans       &trans
-            >;
-        };
-
-        layer_5 {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &kp LG(B)
-&trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans
             >;
         };
 
